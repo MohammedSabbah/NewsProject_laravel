@@ -2,15 +2,12 @@
 
 namespace App\Entities;
 
-
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Comment extends Model
 {
-    protected $fillable=['title'];
-
     public function news()
     {
-        return $this->belongsToMany(News::class);
+        return $this->belongsTo(News::class);
     }
 }

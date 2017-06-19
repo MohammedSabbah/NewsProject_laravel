@@ -12,7 +12,7 @@ class News extends Model
 
     public function scopeGetLatest()
     {
-        return $this->orderBy('created_at', 'desc')->with('images','tags');
+        return $this->orderBy('created_at', 'desc');
     }
 
     public function images()
@@ -22,6 +22,21 @@ class News extends Model
 
     public function tags()
     {
-        return $this->hasMany(Tag::class)->select(array('news_id','name'));
+        return $this->belongsToMany(Tag::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return substr($value, 0, 10);
+    }
+
+    public function getUpdatedAtAttribute($value)
+    {
+        return substr($value, 0, 10);
     }
 }

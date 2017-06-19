@@ -19,14 +19,32 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/test', 'NewsController@test');
 
+
+// news
 Route::get('/getMainNews', 'NewsController@getMainNews');
 Route::get('/getFiveNews', 'NewsController@getFiveNews');
 Route::get('/getRestNews', 'NewsController@getRestNews');
+Route::get('/getLatestNews/{num}', 'NewsController@getLatestNews');
+Route::get('/getMostWatchedNews/{num}', 'NewsController@getMostWatchedNews');
+Route::get('/getYesterdayNews/{num}', 'NewsController@getYesterdayNews');
 Route::get('/getLocalNews', 'NewsController@getLocalNews');
 Route::get('/getInternationalNews', 'NewsController@getInternationalNews');
 Route::get('/getSingleNews/{id}', 'NewsController@getSingleNews');
-Route::get('/pray', 'NewsController@pray');
+Route::get('/getNewsByCategory/{id}', 'NewsController@getNewsByCategory');
+Route::get('/getRelatedNews/{id}/{num}', 'NewsController@getRelatedNews');
 
+// quran
+Route::get('/pray', 'QuranController@pray');
+
+// comment
+Route::get('/getComments/{id}', 'CommentController@getComments');
+
+// cooking
+Route::get('/getNumRecipes/{num}', 'NewsController@getNumRecipes');
+
+// currency
 Route::get('/currency', 'CurrencyController@index');
+
+
 
 
